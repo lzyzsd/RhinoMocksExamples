@@ -404,16 +404,16 @@ namespace RhinoMocksExamples
         [Test]
         public void Another_way_to_verify_expectations_instead_of_AssertWasCalled()
         {
-            var stub = MockRepository.GenerateMock<ISampleClass>();
+            var mock = MockRepository.GenerateMock<ISampleClass>();
 
             // Here I'm setting up an expectation that a method will be called
-            stub.Expect(s => s.MethodThatReturnsInteger("foo")).Return(5);
+			mock.Expect(s => s.MethodThatReturnsInteger("foo")).Return(5);
 
-            var output = stub.MethodThatReturnsInteger("foo");
+			var output = mock.MethodThatReturnsInteger("foo");
             output.ShouldEqual(5);
 
             // ... and now I'm verifying that the method was called
-            stub.VerifyAllExpectations();
+			mock.VerifyAllExpectations();
         }
     }
 
